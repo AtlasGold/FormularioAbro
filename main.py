@@ -1,14 +1,32 @@
+from PIL import Image
 from os import write
 import streamlit as st
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 
 st.sidebar.title("Navegue Pelo Questionario")
-paginaselec = st.sidebar.selectbox("Selecione as Perguntas",["Saúde","Pessoais"])
+paginaselec = st.sidebar.selectbox("Selecione as Perguntas",["Cadastro","Saúde","Pessoais"])
+
+
+
+
+if paginaselec ==("Cadastro"):
+   #st.markdown("<h6 style='text-align: center; ;'>Cadastro</h6>", unsafe_allow_html=True)
+   st.title("Cadastro")
+   input_nome = st.text_input("Digite Seu Nome")
+   input_telefone = st.text_input("Telefone Para Contato")
+   input_email = st.text_input("E-mail")
+   col1, col2, col3 = st.columns(3)
+   image = Image.open('abbro.png')
+   
+   col2.image(image, use_column_width=True)
+
+
+
 
 if paginaselec == ("Saúde") :
  st.title("Anamnese")
  input_01 = st.text_input("Qual O Motivo Da Consulta ? ") 
- input_02 = st.selectbox("Está Fazendo Algum Tratamento Médico ou Tem Algum Problema de Saúde ? Diabetes ? Hipertensão ? Cardíaco ? Osteoporose ? ",["","Sim","Não"])
+ input_02 = st.selectbox("Está Fazendo Algum Tratamento Médico ou Tem Algum Problema de Saúde ? ",["","Sim","Não"])
  input_03 = st.selectbox("Está Tomando Algum Medicamento?",["","Sim","Não"])
  if input_03 ==("Sim"):
      input_003 =st.text_input("Quais Medicamentos ?")
@@ -25,7 +43,6 @@ if paginaselec == ("Saúde") :
  input_11 = st.selectbox("Teve Algum Desmaio, Ataques Nervoso, Epilepsia ou Convulções ? ",["","Sim","Não"])
  input_12 = st.selectbox("Pode Estar Gravida ?",["","Sim","Não"])
  input_25 = st.selectbox("Já Realizou Algum Procedimento Estético Facial ? Botox? Preenchimento com Ac. Hialurônico ou PMA ?",["","Sim","Não"])
-
 
 
 
