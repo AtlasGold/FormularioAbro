@@ -10,7 +10,6 @@ paginaselec = st.sidebar.selectbox("Selecione as Perguntas",["Cadastro","Saúde"
 
 
 if paginaselec ==("Cadastro"):
-   #st.markdown("<h6 style='text-align: center; ;'>Cadastro</h6>", unsafe_allow_html=True)
    st.title("Cadastro")
    input_nome = st.text_input("Digite Seu Nome")
    input_telefone = st.text_input("Telefone Para Contato")
