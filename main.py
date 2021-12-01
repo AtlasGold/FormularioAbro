@@ -6,7 +6,12 @@ from streamlit.proto.Selectbox_pb2 import Selectbox
 st.sidebar.title("Navegue Pelo Questionario")
 paginaselec = st.sidebar.selectbox("Selecione as Perguntas",["Cadastro","Saúde","Pessoais"])
 
-
+THEMES = [
+    "light",
+    "dark",
+    "green",
+    "blue",
+]
 
 
 if paginaselec ==("Cadastro"):
