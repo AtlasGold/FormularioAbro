@@ -34,7 +34,7 @@ if paginaselec == ("Saúde") :
  input_08 = st.selectbox("Você Fuma ?",["","Sim","Não"])
  input_09 = st.selectbox("Quando Você se Corta, Sangra Muito ?",["","Sim","Não"])
  input_10 = st.selectbox("Sente Dores de Dente ? Cabeça ? Dores na Face ? Ouvido ou Articulações ?",["","Sim","Não"])
- input_11 = st.selectbox("Teve Algum Desmaio, Ataques Nervoso, Epilepsia ou Convulções ? ",["","Sim","Não"])
+ input_11 = st.selectbox("Teve Algum Desmaio, Ataques Nervoso, Epilepsia ou Convulsões ? ",["","Sim","Não"])
  input_12 = st.selectbox("Pode Estar Gravida ?",["","Sim","Não"])
  input_25 = st.selectbox("Já Realizou Algum Procedimento Estético Facial ? Botox? Preenchimento com Ac. Hialurônico ou PMA ?",["","Sim","Não"])
 
