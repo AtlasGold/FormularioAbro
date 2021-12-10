@@ -1,6 +1,7 @@
 from PIL import Image
 from os import write
 import streamlit as st
+from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 
 #trocar o nome da pagina e o icone
@@ -22,8 +23,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 st.title("Cadastro")
 input_nome = st.text_input("Digite Seu Nome")
 input_telefone = st.text_input("Telefone Para Contato")
-input_email = st.text_input("E-mail")
-proximo = st.button("proximo",)
+input_CPF = st.text_input("CPF")
 
    
 col1, col2, col3 = st.columns(3)
