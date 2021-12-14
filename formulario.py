@@ -21,7 +21,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 st.title("Cadastro")
-input_nome = st.text_input("Digite Seu Nome")
+input_nome = st.text_input("Digite Seu Nome Completo")
 input_telefone = st.text_input("Telefone Para Contato")
 input_CPF = st.text_input("CPF")
 
