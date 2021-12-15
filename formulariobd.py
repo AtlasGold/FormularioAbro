@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
-
+import pyodbc 
 
 
 
@@ -25,7 +25,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 #conexão
 
-import pyodbc 
+
 
 cnxn = pyodbc.connect("DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER=127.0.0.1:3306;DATABASE=abro; UID=root; PASSWORD=@JpK92!1SHa50.; Trusted_Connection=yes;")
 cursor = cnxn.cursor()
