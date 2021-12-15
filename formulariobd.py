@@ -5,10 +5,29 @@ from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
 
+
+
+
+#trocar o nome da pagina e o icone
+st.set_page_config(page_title = "Abro",
+    page_icon=":smiley:")
+#remover o botão de Menu
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: visible;}
+            </style>
+            
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
+
 #conexão
+
 import pyodbc 
 
-cnxn = pyodbc.connect("DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER=127.0.0.1:3306;DATABASE=abro; UID=abro2; PASSWORD=teste2; Trusted_Connection=yes;")
+cnxn = pyodbc.connect("DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER=127.0.0.1:3306;DATABASE=abro; UID=root; PASSWORD=@JpK92!1SHa50.; Trusted_Connection=yes;")
 cursor = cnxn.cursor()
 
 
@@ -28,29 +47,6 @@ def inserir_so(profissão,time,qtime,animal,qanimal,filho,nfilho,medo,sorriso,fa
     
 
 
-
-
-
-
-
-
-
-
-
-
-#trocar o nome da pagina e o icone
-st.set_page_config(page_title = "Abro",
-    page_icon=":smiley:")
-#remover o botão de Menu
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: visible;}
-            </style>
-            
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 
