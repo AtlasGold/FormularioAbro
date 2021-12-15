@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
-import pyodbc 
+
 
 
 
