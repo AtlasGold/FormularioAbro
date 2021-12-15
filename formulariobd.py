@@ -6,6 +6,15 @@ from streamlit.proto.Selectbox_pb2 import Selectbox
 import pandas as pd
 import pyodbc 
 
+import mysql.connector
+
+# Connect to server
+cnx = mysql.connector.connect(
+    host="127.0.0.1",
+    port=3306,
+    user="mike",
+    password="s3cre3t!")
+
 
 
 #trocar o nome da pagina e o icone
