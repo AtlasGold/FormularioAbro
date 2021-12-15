@@ -6,14 +6,6 @@ from streamlit.proto.Selectbox_pb2 import Selectbox
 import pandas as pd
 import pyodbc 
 
-import mysql.connector
-
-# Connect to server
-cnx = mysql.connector.connect(
-    host="127.0.0.1",
-    port=3306,
-    user="mike",
-    password="s3cre3t!")
 
 
 
@@ -33,8 +25,6 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 #conexão
-
-
 
 cnxn = pyodbc.connect("DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER=127.0.0.1:3306;DATABASE=abro; UID=root; PASSWORD=@JpK92!1SHa50.; Trusted_Connection=yes;")
 cursor = cnxn.cursor()
@@ -79,7 +69,7 @@ input_04 = st.selectbox("Tem Alergia a Algum Medicamento ?",["","Sim","Não"])
 if input_04 ==("Sim"):
      input_004 = st.text_input("Apresenta Alergia a Quais Medicamentos ?")
 input_05 = st.selectbox("Teve Alguma Reação a Anestesia Local ?",["","Sim","Não"])
-input_06 = st.text_input("Quando Foi o Seu Ultimo Tratamento Odontológico ?")
+input_06 = st.date_input("Quando Foi o Seu Ultimo Tratamento Odontológico ?")
 input_006 = st.selectbox ("Já Realizou Tratamento de Canal ? Prótese ? Implante ? Perdeu Algum Dente ?",["","Sim","Não"])
 input_07 = st.selectbox("Sua Gengiva Sangra Com Frequência ?",["","Sim","Não"])
 input_08 = st.selectbox("Você Fuma ?",["","Sim","Não"])

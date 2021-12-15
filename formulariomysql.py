@@ -4,7 +4,7 @@ import streamlit as st
 from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
-
+import mysql.connector
 
 
 
@@ -26,30 +26,30 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 #conexão
 
-import mysql.connector
+
 
 # Connect to server
-cnx = mysql.connector.connect(
+cnxn = mysql.connector.connect(
     host="127.0.0.1",
     port=3306,
     user="root",
     password="@JpK92!1SHa50.!")
 
-cursor = cnx.cursor()
+cursor = cnxn.cursor()
 
 
 def inserir(nome,telefone,cpf):
     cursor.execute("INSERT INTO cadastro VALUES (0,'{}','{}','{}')".format(nome,telefone,cpf))
-    cnx.commit()
+    cnxn.commit()
 
 
 def inserir_an(motivo,tratamento,medicamento,qmedicamentos,alergia,qalergias,anestesia,ultimo,canal,gengiva,fuma,sangra,dor,desmaio,gravida,procedimento,cpf,nome):
     cursor.execute("INSERT INTO anamnese1 VALUES (0,'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(motivo,tratamento,medicamento,qmedicamentos,alergia,qalergias,anestesia,ultimo,canal,gengiva,fuma,sangra,dor,desmaio,gravida,procedimento,cpf,nome))
-    cnx.commit()
+    cnxn.commit()
 
 def inserir_so(profissão,time,qtime,animal,qanimal,filho,nfilho,medo,sorriso,facebook,instagram,qinstagram,hobby,qhobby,ambiente,generom,programação, generof,cpf,nome):
     cursor.execute("INSERT INTO sociais VALUES (0,'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(profissão,time,qtime,animal,qanimal,filho,nfilho,medo,sorriso,facebook,instagram,qinstagram,hobby,qhobby,ambiente,generom,programação, generof,cpf,nome))
-    cnx.commit()
+    cnxn.commit()
 
     
 
