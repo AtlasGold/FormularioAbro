@@ -32,7 +32,8 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 #conexão
 
-cnxn = pyodbc.connect("DRIVER={MySQL ODBC 8.0 Unicode Driver}; SERVER=127.0.0.1:3306;DATABASE=abro; UID=root; PASSWORD=@JpK92!1SHa50.; Trusted_Connection=yes;")
+import mysql.connector
+cnxn = mysql.connector.connect(host="127.0.0.1:3306", user="root", passwd="@JpK92!1SHa50.", db="abro")
 cursor = cnxn.cursor()
 
 
