@@ -2,11 +2,7 @@ from logging import exception
 from PIL import Image
 from os import write
 import streamlit as st
-from streamlit.elements.button import ButtonMixin
-from streamlit.elements.number_input import Number
-from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
-import pyodbc
 from streamlit.type_util import Key 
 
 
