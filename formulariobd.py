@@ -1,10 +1,13 @@
+from logging import exception
 from PIL import Image
 from os import write
 import streamlit as st
+from streamlit.elements.button import ButtonMixin
 from streamlit.elements.number_input import Number
 from streamlit.proto.Selectbox_pb2 import Selectbox 
 import pandas as pd
-import pyodbc 
+import pyodbc
+from streamlit.type_util import Key 
 
 
 
@@ -12,16 +15,19 @@ import pyodbc
 #trocar o nome da pagina e o icone
 st.set_page_config(page_title = "Abro",
     page_icon=":smiley:")
+
 #remover o botão de Menu
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
-            header {visibility: visible;}
             </style>
             
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+
 
 
 #conexão
@@ -38,7 +44,7 @@ def inserir(nome,telefone,cpf):
 def inserir_an(motivo,tratamento,medicamento,qmedicamentos,alergia,qalergias,anestesia,ultimo,canal,gengiva,fuma,sangra,dor,desmaio,gravida,procedimento,cpf,nome):
     cursor.execute("INSERT INTO anamnese1 VALUES (0,'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(motivo,tratamento,medicamento,qmedicamentos,alergia,qalergias,anestesia,ultimo,canal,gengiva,fuma,sangra,dor,desmaio,gravida,procedimento,cpf,nome))
     cnxn.commit()
-
+    
 def inserir_so(profissão,time,qtime,animal,qanimal,filho,nfilho,medo,sorriso,facebook,instagram,qinstagram,hobby,qhobby,ambiente,generom,programação, generof,cpf,nome):
     cursor.execute("INSERT INTO sociais VALUES (0,'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(profissão,time,qtime,animal,qanimal,filho,nfilho,medo,sorriso,facebook,instagram,qinstagram,hobby,qhobby,ambiente,generom,programação, generof,cpf,nome))
     cnxn.commit()
@@ -61,8 +67,11 @@ col2.image(image, use_column_width=True)
 
 st.title("Anamnese")
 input_01 = st.text_input("Qual O Motivo Da Consulta ? ") 
+
 input_02 = st.selectbox("Está Fazendo Algum Tratamento Médico ou Tem Algum Problema de Saúde ? ",["","Sim","Não"])
+
 input_03 = st.selectbox("Está Tomando Algum Medicamento?",["","Sim","Não"])
+
 if input_03 ==("Sim"):
      input_003 =st.text_input("Quais Medicamentos ?")
 input_04 = st.selectbox("Tem Alergia a Algum Medicamento ?",["","Sim","Não"])
@@ -81,8 +90,11 @@ input_25 = st.selectbox("Já Realizou Algum Procedimento Estético Facial ? Boto
 
 
 st.title("Sobre Você")
+st.warning("Perguntas Opcionais")
 
 input_13 = st.text_input("Qual Sua Profissão ?")
+if input_13=="":
+ input_13=("")
 input_14 = st.selectbox("Gosta de Futebol ?",["","Sim","Não"])
 if input_14 == ("Sim") :
     input_014 = st.text_input("Para Quais Times Você Torce ?")
@@ -97,13 +109,21 @@ if input_16 == ("Sim"):
 
 
 input_17 = st.selectbox("Tem Medo De Dentista ?",["","Sim","Não"])
+if input_17=="":
+ input_17=("")
+
 input_18 = st.selectbox("Esta Satisfeito Com Sua Estética Facil e de Sorriso ? ",["","Sim","Não"])
+if input_18=="":
+ input_18=("")
 
 input_19 = st.selectbox("Tem Facebook? ",["","Sim","Não"])
-
+if input_19=="":
+ input_19=("")
 input_20 = st.selectbox("Tem Instagram ?",["","Sim","Não"])
+
 if input_20 == ("Sim"):
     input_020 = st.text_input("Qual?",key='chave')
+
 
 input_21 = st.selectbox("Tem Algum Hobby ?",["","Sim","Não"])
 if input_21 == ("Sim"):
@@ -114,31 +134,59 @@ if input_22 == ("Sim"):
     input_022 = st.text_input("Qual Gênero/Ritmo Gosta de Ouvir ?")
 
 input_23 = st.text_input ("Qual Tipo De Programa De Televisão Gosta De Assistir ?")
+if input_23=="":
+ input_23=("")
+
 input_24 = st.text_input ("Qual Gênero De Filme Gosta ?")
 
+#tirar a obrigatoriedade de responder os dados pessoais
 
-
-
-
-if st.button("Enviar"):
-    if input_03 == 'Não':
+if input_24=="":
+ input_24=("")
+if input_03 == 'Não':
         input_003 = 'Não'
-    if input_04 == 'Não':
+if input_04 == 'Não':
         input_004 = 'Não'
-    if input_14 == 'Não':
+if input_14 == 'Não':
         input_014 = 'Nenhum'
-    if input_15 == 'Não':
+if input_14 == "":
+    input_014=("Não Informou")
+if input_15 == 'Não':
         input_015 = 'Nenhum'
-    if input_16 == 'Não':
+if input_15 == "":
+        input_015=("Não informou")
+if input_16 == 'Não':
         input_0016 = 'Não tenho'
-    if input_20 == 'Não':
+if input_16 == "":
+        input_0016=("Não informou")
+if input_20 == 'Não':
         input_020 = 'Não tenho'
-    if input_21 == 'Não':
+if input_20 == "":
+         input_020=("Não informou")
+if input_21 == 'Não':
         input_021 = 'Não tenho'
-    if input_22 == 'Não':
-        input_022 = 'Não gosto'        
-    inserir(input_nome,input_telefone,input_CPF)
-    inserir_an(input_01,input_02,input_03,input_003,input_04,input_004,input_05,input_06,input_006,input_07,input_08,input_09,input_10,input_11,input_12,input_25,input_CPF,input_nome )
-    inserir_so(input_13,input_14,input_014,input_15,input_015,input_16,input_0016,input_17,input_18,input_19,input_20,input_020,input_21,input_021,input_22,input_022,input_23,input_24,input_CPF,input_nome)
+if input_21 == "":
+         input_021=("Não informou")
+if input_22 == 'Não':
+        input_022 = 'Não gosto'   
+if input_22 == "":
+        input_022=("Não informou")  
 
-    st.success('Dados enviados')
+
+
+
+ 
+
+    
+try:                                               
+ if st.button("Enviar"):
+  inserir(input_nome,input_telefone,input_CPF)
+  inserir_an(input_01,input_02,input_03,input_003,input_04,input_004,input_05,input_06,input_006,input_07,input_08,input_09,input_10,input_11,input_12,input_25,input_CPF,input_nome )
+  inserir_so(input_13,input_14,input_014,input_15,input_015,input_16,input_0016,input_17,input_18,input_19,input_20,input_020,input_21,input_021,input_22,input_022,input_23,input_24,input_CPF,input_nome)
+  if st.button == 0 : st.error("Certifique-se que enviou tudo!") 
+  else: st.success('Tudo Certo !')
+except:
+    st.error("Algumas Informações Importantes Estão Faltando")
+
+  
+
